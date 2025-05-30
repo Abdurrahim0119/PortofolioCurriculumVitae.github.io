@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300">
+  <head>
+    <!-- START: Meta Tags and Basic Setup -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Abdurrahim</title>
+    
+    <!-- START: CSS and JavaScript Dependencies -->
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Animate On Scroll (AOS) Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom Styles for 3D Card -->
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      /* 3D Profile Card Styles */
+      .profile-card-3d {
+        perspective: 1000px;
+        transform-style: preserve-3d;
+        transition: transform 0.5s ease;
+      }
+      
+      .profile-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.5s;
+      }
+      
+      .profile-card-front, .profile-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 0.5rem;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      
+      .profile-card-back {
+        transform: rotateY(180deg);
+        background: linear-gradient(135deg, #3b82f6, #6366f1);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+      }
+      
+      /* Scroll-based animation */
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+      }
+      
+      .floating {
+        animation: float 3s ease-in-out infinite;
+      }
+    </style>
+    <!-- END: CSS and JavaScript Dependencies -->
+  </head>
+
+  <body class="h-full px-4 sm:px-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 text-gray-900">
+    <!-- ===== START: NAVIGATION BAR ===== -->
+    <nav class="bg-gray-900 shadow-md">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <!-- Desktop Navigation Links -->
+          <div class="flex items-center">
+            <div class="hidden md:block">
+              <div class="ml-10 flex items-baseline space-x-4">
+                <a href="index.html" class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-semibold hover:bg-gray-700 transition">Dashboard</a>
+                <a href="project.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-semibold transition">Projects</a>
+                <a href="contact.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-semibold transition">Contact</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Profile Dropdown (Desktop) -->
+          <div class="hidden md:block">
+            <div class="ml-4 flex items-center md:ml-6 relative">
+              <button onclick="toggleDropdown()" class="flex text-sm rounded-full bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900">
+                <img class="h-8 w-8 rounded-full border-2 border-gray-300" src="asset/img/profile.jpeg" alt="User Profile" />
+              </button>
+              
+              <!-- Dropdown Menu -->
+              <div id="dropdown-menu" class="hidden absolute right-0 top-12 w-48 bg-white rounded-md shadow-lg z-50">
+                <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
+                <a href="project.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Projects</a>
+                <a href="contact.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="-mr-2 flex md:hidden">
+            <button onclick="toggleMobileMenu()" class="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu (Hidden by default) -->
+      <div id="mobile-menu" class="hidden md:hidden">
+        <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
+          <a href="index.html" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-semibold">Dashboard</a>
+          <a href="project.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-semibold">Projects</a>
+          <a href="contact.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-semibold">Contact</a>
+        </div>
+      </div>
+    </nav>
+    <!-- ===== END: NAVIGATION BAR ===== -->
+
+    <!-- ===== START: HEADER SECTION DENGAN 3D CARD YANG DIPERBAIKI ===== -->
+    <header class="bg-white shadow-md h-auto py-12 flex flex-col justify-center items-center text-center px-6">
+      <!-- 3D Profile Card Container - Sekarang bisa flip di semua device -->
+      <div class="profile-card-3d w-64 h-80 mb-8 mx-auto" id="profileCard" onclick="flipCard()">
+        <div class="profile-card-inner h-full w-full">
+          <!-- Front of the Card -->
+          <div class="profile-card-front bg-white rounded-lg flex flex-col items-center justify-center p-6">
+            <img src="asset/img/profile.jpeg" alt="Profile Picture" 
+                 class="w-32 h-32 rounded-full mb-4 shadow-lg border-4 border-gray-300 floating" />
+            <h3 class="text-xl font-semibold text-gray-800">Abdurrahim</h3>
+            <p class="text-gray-600 text-sm mt-2">Information Systems Student</p>
+            <p class="text-xs text-gray-500 mt-4">Click or hover to flip</p>
+          </div>
+          
+          <!-- Back of the Card -->
+          <div class="profile-card-back">
+            <h3 class="text-xl font-semibold mb-2">About Me</h3>
+            <p class="text-center text-sm">Undergraduate student at Bina Sarana Informatika University, focused on programming and software development.</p>
+          </div>
+        </div>
+      </div>
+      
+      <h2 class="text-4xl font-semibold mb-3">Welcome to My Portfolio</h2>
+      <p class="max-w-3xl text-gray-700 text-lg leading-relaxed">
+        I am an undergraduate student at Bina Sarana Informatika University,
+        majoring in Information Systems. Currently, I am deeply focused on
+        enhancing my skills in programming and software development. Based in
+        Jakarta, I aspire to contribute to impactful digital solutions.
+      </p>
+    </header>
+    <!-- ===== END: HEADER SECTION ===== -->
+
+    <!-- ===== START: MAIN CONTENT (EXPERIENCE SECTION) ===== -->
+    <main class="py-12 max-w-7xl mx-auto px-6">
+      <h1 class="text-3xl font-bold text-gray-900 mb-8 text-center" data-aos="zoom-in">
+        Internship Experience
+      </h1>
+      
+      <div class="space-y-8">
+        <!-- BPN Internship Card -->
+        <section class="bg-white rounded-lg shadow-lg p-8" data-aos="fade-right">
+          <h2 class="text-2xl font-semibold mb-3 text-gray-900">Magang - BPN Jakarta Utara</h2>
+          <p class="text-sm text-gray-500 mb-3">Januari 2019 – Juni 2019 | Posisi: Tata Usaha</p>
+          <ul class="list-disc list-inside text-gray-700 mt-3 space-y-1">
+            <li>Merapikan dokumen fisik dan digital.</li>
+            <li>Mencatat dan mengarsipkan secara sistematis.</li>
+            <li>Mengategorikan dokumen berdasarkan urgensi.</li>
+            <li>Menjaga efisiensi sistem dokumentasi internal.</li>
+          </ul>
+          <p class="mt-4 text-gray-700 leading-relaxed">
+            Pengalaman ini mengasah keterampilan saya dalam pengelolaan dokumen dan ketelitian administrasi.
+          </p>
+        </section>
+
+        <!-- BPJS Internship Card -->
+        <section class="bg-white rounded-lg shadow-lg p-8" data-aos="fade-left">
+          <h2 class="text-2xl font-semibold mb-3 text-gray-900">Magang - BPJS Ketenagakerjaan Grha BPJamsostek</h2>
+          <p class="text-sm text-gray-500 mb-3">April 2025 – Juli 2025 | Posisi: Infrastruktur dan Operasional Pengembangan TI</p>
+          <ul class="list-disc list-inside text-gray-700 mt-3 space-y-1">
+            <li>Dokumentasi layanan SD-WAN.</li>
+            <li>Pengelompokan arsip dan pencatatan data kantor cabang.</li>
+            <li>Inventarisasi data layanan TI.</li>
+          </ul>
+          <p class="mt-4 text-gray-700 leading-relaxed">
+            Pengalaman ini memperluas wawasan saya tentang operasional TI dan dokumentasi teknis.
+          </p>
+        </section>
+      </div>
+    </main>
+    <!-- ===== END: MAIN CONTENT (EXPERIENCE SECTION) ===== -->
+
+    <!-- ===== START: EDUCATION SECTION ===== -->
+    <section class="max-w-7xl mx-auto px-6 py-12 bg-white rounded-lg shadow-lg mt-12" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">My Education</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto text-gray-700">
+        <!-- SMK Education -->
+        <div class="flex items-center space-x-4">
+          <img src="asset/img/book.png" alt="SMK Icon" class="h-16 w-16 object-contain" />
+          <div>
+            <h3 class="text-xl font-semibold">SMK AL-JIHAD</h3>
+            <h4 class="text-md font-medium">Office Administration</h4>
+            <p class="text-sm text-gray-500">2018 - 2021</p>
+          </div>
+        </div>
+        
+        <!-- University Education -->
+        <div class="flex items-center space-x-4">
+          <img src="asset/img/universitas.png" alt="University Icon" class="h-16 w-16 object-contain" />
+          <div>
+            <h3 class="text-xl font-semibold">Bina Sarana Informatika University</h3>
+            <h4 class="text-md font-medium">Information System</h4>
+            <p class="text-sm text-gray-500">2022 - 2025 (Expected)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END: EDUCATION SECTION ===== -->
+
+    <!-- ===== START: BACK TO TOP BUTTON ===== -->
+    <button id="backToTop" onclick="scrollToTop()" class="hidden fixed bottom-6 right-6 z-50 bg-gray-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-gray-700 transition duration-300">
+      ↑ Top
+    </button>
+    <!-- ===== END: BACK TO TOP BUTTON ===== -->
+
+    <!-- ===== START: FOOTER SECTION ===== -->
+    <footer class="bg-gray-800 text-gray-300 py-6 mt-5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <!-- Social Media Links -->
+        <div class="flex justify-center space-x-6">
+          <!-- GitHub Link -->
+          <a href="https://github.com/Abdurrahim0119" target="_blank" class="hover:text-gray-300">
+            <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.372 0 0 5.373 0 12a12 12 0 008.208 11.385c.6.113.82-.26.82-.577v-2.023c-3.338.726-4.042-1.607-4.042-1.607a3.182 3.182 0 00-1.335-1.753c-1.09-.745.082-.73.082-.73a2.518 2.518 0 011.839 1.234 2.55 2.55 0 003.49.995 2.548 2.548 0 01.76-1.6c-2.665-.304-5.466-1.334-5.466-5.933a4.644 4.644 0 011.236-3.215 4.31 4.31 0 01.117-3.171s1.008-.322 3.3 1.23a11.42 11.42 0 016 0c2.29-1.552 3.296-1.23 3.296-1.23a4.31 4.31 0 01.119 3.171 4.639 4.639 0 011.234 3.215c0 4.61-2.803 5.626-5.475 5.922a2.862 2.862 0 01.817 2.222v3.293c0 .32.216.694.825.576A12.003 12.003 0 0024 12c0-6.627-5.373-12-12-12z" />
+            </svg>
+          </a>
+          
+          <!-- LinkedIn Link -->
+          <a href="https://www.linkedin.com/in/abdurrahim-rahim/" target="_blank" class="hover:text-gray-300">
+            <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11.846 19h-2.308v-8.846h2.308v8.846zm-1.154-10.154c-.738 0-1.333-.595-1.333-1.333s.595-1.333 1.333-1.333 1.333.595 1.333 1.333-.596 1.333-1.333 1.333zm13 10.154h-2.308v-4.154c0-.989-.019-2.262-1.385-2.262-1.386 0-1.598 1.084-1.598 2.194v4.222h-2.308v-8.846h2.215v1.209h.03c.309-.586 1.064-1.202 2.189-1.202 2.344 0 2.777 1.543 2.777 3.548v5.291z" />
+            </svg>
+          </a>
+          
+          <!-- Instagram Link -->
+          <a href="https://www.instagram.com/dedee019?igsh=a3oxOGd6cW5xNXdh" target="_blank" class="hover:text-gray-300">
+            <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.34 3.608 1.315.975.975 1.253 2.242 1.315 3.608.058 1.266.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.34 2.633-1.315 3.608-.975.975-2.242 1.253-3.608 1.315-1.266.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.34-3.608-1.315-.975-.975-1.253-2.242-1.315-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.34-2.633 1.315-3.608C4.523 2.573 5.79 2.295 7.156 2.233 8.422 2.175 8.802 2.163 12 2.163M12 0C8.741 0 8.332.013 7.053.072 5.775.131 4.58.388 3.515 1.453 2.451 2.518 2.194 3.713 2.135 4.991 2.075 6.27 2.062 6.679 2.062 10c0 3.321.013 3.73.072 5.009.059 1.278.316 2.473 1.38 3.538 1.065 1.065 2.26 1.322 3.538 1.38 1.278.059 1.688.072 5.009.072s3.73-.013 5.009-.072c1.278-.059 2.473-.316 3.538-1.38 1.065-1.065 1.322-2.26 1.38-3.538.059-1.278.072-1.688.072-5.009s-.013-3.73-.072-5.009c-.059-1.278-.316-2.473-1.38-3.538C19.392.388 18.197.131 16.919.072 15.641.013 15.232 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z" />
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Copyright Notice -->
+        <p class="mb-4">© 2025 By Abdurrahim. All rights reserved.</p>
+      </div>
+    </footer>
+    <!-- ===== END: FOOTER SECTION ===== -->
+
+    <!-- ===== START: JAVASCRIPT SECTION ===== -->
+    <script>
+      // Initialize Animate On Scroll (AOS) library
+      AOS.init({
+        once: false,         // Whether animation should happen only once
+        duration: 800,      // Animation duration in milliseconds
+        easing: "ease-in-out" // Animation easing function
+      });
+
+      // Toggle mobile menu visibility
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobile-menu");
+        menu.classList.toggle("hidden");
+      }
+
+      // Toggle dropdown menu visibility
+      function toggleDropdown() {
+        const dropdown = document.getElementById("dropdown-menu");
+        dropdown.classList.toggle("hidden");
+      }
+
+      // Back to Top button functionality
+      const backToTop = document.getElementById("backToTop");
+      
+      // Show/hide button based on scroll position
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTop.classList.remove("hidden");
+        } else {
+          backToTop.classList.add("hidden");
+        }
+        
+        // 3D Card Scroll Effect
+        const profileCard = document.getElementById('profileCard');
+        const scrollPercentage = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+        
+        // Rotate based on scroll position
+        profileCard.style.transform = `rotateX(${scrollPercentage * 10}deg) rotateY(${scrollPercentage * 10}deg)`;
+        
+        // Move up/down based on scroll
+        const moveY = Math.sin(scrollPercentage * Math.PI * 2) * 20;
+        profileCard.style.transform += ` translateY(${moveY}px)`;
+      });
+
+      // Smooth scroll to top function
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      
+       function flipCard() {
+        const cardInner = document.querySelector('.profile-card-inner');
+        cardInner.style.transform = cardInner.style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)';
+      }
+
+      // Hover effect untuk desktop
+      document.addEventListener('DOMContentLoaded', () => {
+        const profileCard = document.getElementById('profileCard');
+        
+        // Untuk perangkat non-touch (desktop)
+        if (!('ontouchstart' in window || navigator.maxTouchPoints)) {
+          profileCard.style.cursor = 'pointer';
+          
+          profileCard.addEventListener('mouseenter', () => {
+            document.querySelector('.profile-card-inner').style.transform = 'rotateY(180deg)';
+          });
+          
+          profileCard.addEventListener('mouseleave', () => {
+            document.querySelector('.profile-card-inner').style.transform = 'rotateY(0deg)';
+          });
+        }
+      });
+    </script>
+    <!-- ===== END: JAVASCRIPT SECTION ===== -->
+  </body>
+</html>

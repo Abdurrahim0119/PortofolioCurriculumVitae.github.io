@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abdurrahim</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+<body class="h-full px-4 sm:px-0">
+
+  <!-- Navbar -->
+  <nav class="bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center">
+          <div class="hidden md:block ml-10 space-x-4">
+            <a href="index.html" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+            <a href="project.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+            <a href="contact" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+          </div>
+        </div>
+
+        <div class="hidden md:flex items-center space-x-4">
+          <!-- Social Media -->
+          <a href="https://github.com/Abdurrahim0119" target="_blank" class="text-gray-300 hover:text-white text-xl">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/abdurrahim-rahim/" target="_blank" class="text-gray-300 hover:text-white text-xl">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://www.instagram.com/dedee019?igsh=a3oxOGd6cW5xNXdh" target="_blank" class="text-gray-300 hover:text-white text-xl">
+            <i class="fab fa-instagram"></i>
+          </a>
+
+          <!-- Profile Dropdown -->
+          <div class="relative">
+            <button id="user-menu-button" class="flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
+              <img class="h-8 w-8 rounded-full" src="asset/img/profile.jpeg" alt="User menu" />
+            </button>
+            <div id="dropdown-menu" class="hidden absolute right-0 z-10 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
+              <a href="index.html" class="block px-4 py-2 text-sm text-gray-700">Dashboard</a>
+              <a href="project.html" class="block px-4 py-2 text-sm text-gray-700">Projects</a>
+              <a href="contact.html" class="block px-4 py-2 text-sm text-gray-700">Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button onclick="toggleMobileMenu()" class="p-2 text-gray-400 hover:text-white hover:bg-gray-700">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-2 pt-2 pb-3">
+      <a href="index.html" class="block text-white bg-gray-900 rounded-md px-3 py-2 text-base font-medium">Dashboard</a>
+      <a href="project.html" class="block text-gray-300 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2 text-base font-medium">Projects</a>
+      <a href="contact.html" class="block text-gray-300 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2 text-base font-medium">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Contact Form -->
+  <main id="contact" class="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg transform transition-all duration-300 hover:shadow-xl">
+    <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Contact Me</h2>
+    <p class="text-center text-gray-600 mb-8">Have a question or want to work together? Send me a message!</p>
+    
+    <form id="contact-form" class="space-y-6">
+      <!-- Honeypot Field untuk spam protection -->
+      <input type="checkbox" name="botcheck" id="botcheck" class="hidden" style="display: none;">
+      
+      <div class="relative">
+        <label for="name" class="block text-gray-700 font-medium mb-1">Name</label>
+        <input type="text" id="name" name="name" required placeholder="Enter your name"
+               class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200" />
+        <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none mt-7 hidden" id="name-check">
+          <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+      </div>
+      
+      <div class="relative">
+        <label for="email" class="block text-gray-700 font-medium mb-1">Email</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email address"
+               class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200" />
+        <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none mt-7 hidden" id="email-check">
+          <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+      </div>
+      
+      <div>
+        <label for="message" class="block text-gray-700 font-medium mb-1">Message</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Type your message here..."
+                  class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"></textarea>
+      </div>
+      
+      <button type="submit"
+              class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg w-full transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+        <span id="button-text">Send Message</span>
+        <span id="button-spinner" class="hidden">
+          <i class="fas fa-spinner fa-spin mr-2"></i> Sending...
+        </span>
+      </button>
+    </form>
+    
+    <!-- Notifikasi -->
+    <div id="form-alert" class="hidden mt-4 p-4 rounded-lg border animate__animated animate__fadeIn"></div>
+  </main>
+
+  <!-- Footer with Social Icons -->
+  <footer class="bg-gray-700 text-white mt-10">
+    <div class="max-w-7xl mx-auto px-4 py-6 text-center">
+      <div class="flex justify-center space-x-6">
+        <a href="https://github.com/Abdurrahim0119" target="_blank" class="hover:text-gray-300 transition duration-300 transform hover:scale-110">
+          <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.372 0 0 5.373 0 12a12 12 0 008.208 11.385c.6.113.82-.26.82-.577v-2.023c-3.338.726-4.042-1.607-4.042-1.607a3.182 3.182 0 00-1.335-1.753c-1.09-.745.082-.73.082-.73a2.518 2.518 0 011.839 1.234 2.55 2.55 0 003.49.995 2.548 2.548 0 01.76-1.6c-2.665-.304-5.466-1.334-5.466-5.933a4.644 4.644 0 011.236-3.215 4.31 4.31 0 01.117-3.171s1.008-.322 3.3 1.23a11.42 11.42 0 016 0c2.29-1.552 3.296-1.23 3.296-1.23a4.31 4.31 0 01.119 3.171 4.639 4.639 0 011.234 3.215c0 4.61-2.803 5.626-5.475 5.922a2.862 2.862 0 01.817 2.222v3.293c0 .32.216.694.825.576A12.003 12.003 0 0024 12c0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/abdurrahim-rahim/" target="_blank" class="hover:text-gray-300 transition duration-300 transform hover:scale-110">
+          <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11.846 19h-2.308v-8.846h2.308v8.846zm-1.154-10.154c-.738 0-1.333-.595-1.333-1.333s.595-1.333 1.333-1.333 1.333.595 1.333 1.333-.596 1.333-1.333 1.333zm13 10.154h-2.308v-4.154c0-.989-.019-2.262-1.385-2.262-1.386 0-1.598 1.084-1.598 2.194v4.222h-2.308v-8.846h2.215v1.209h.03c.309-.586 1.064-1.202 2.189-1.202 2.344 0 2.777 1.543 2.777 3.548v5.291z"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/dedee019?igsh=a3oxOGd6cW5xNXdh" target="_blank" class="hover:text-gray-300 transition duration-300 transform hover:scale-110">
+          <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.34 3.608 1.315.975.975 1.253 2.242 1.315 3.608.058 1.266.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.34 2.633-1.315 3.608-.975.975-2.242 1.253-3.608 1.315-1.266.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.34-3.608-1.315-.975-.975-1.253-2.242-1.315-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.34-2.633 1.315-3.608C4.523 2.573 5.79 2.295 7.156 2.233 8.422 2.175 8.802 2.163 12 2.163M12 0C8.741 0 8.332.013 7.053.072 5.775.131 4.58.388 3.515 1.453 2.451 2.518 2.194 3.713 2.135 4.991 2.075 6.27 2.062 6.679 2.062 10c0 3.321.013 3.73.072 5.009.059 1.278.316 2.473 1.38 3.538 1.065 1.065 2.26 1.322 3.538 1.38 1.278.059 1.688.072 5.009.072s3.73-.013 5.009-.072c1.278-.059 2.473-.316 3.538-1.38 1.065-1.065 1.322-2.26 1.38-3.538.059-1.278.072-1.688.072-5.009s-.013-3.73-.072-5.009c-.059-1.278-.316-2.473-1.38-3.538C19.392.388 18.197.131 16.919.072 15.641.013 15.232 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/>
+          </svg>
+        </a>
+      </div>
+      <p class="mb-4 mt-4">© 2025 By Abdurrahim. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    // Navbar Script
+    const profileBtn = document.getElementById("user-menu-button");
+    const dropdownMenu = document.getElementById("dropdown-menu");
+
+    profileBtn.addEventListener("click", () => {
+      dropdownMenu.classList.toggle("hidden");
+    });
+
+    function toggleMobileMenu() {
+      const mobileMenu = document.getElementById("mobile-menu");
+      mobileMenu.classList.toggle("hidden");
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (event) => {
+      if (!profileBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+        dropdownMenu.classList.add("hidden");
+      }
+    });
+
+    // Validasi form real-time
+    document.getElementById('name').addEventListener('input', function() {
+      const nameCheck = document.getElementById('name-check');
+      if (this.value.length > 0) {
+        nameCheck.classList.remove('hidden');
+      } else {
+        nameCheck.classList.add('hidden');
+      }
+    });
+
+    document.getElementById('email').addEventListener('input', function() {
+      const emailCheck = document.getElementById('email-check');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (emailRegex.test(this.value)) {
+        emailCheck.classList.remove('hidden');
+      } else {
+        emailCheck.classList.add('hidden');
+      }
+    });
+  </script>
+
+  <!-- EmailJS Integration -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    // Inisialisasi EmailJS - GANTI DENGAN DATA ANDA
+    (function() {
+      // ====== GANTI DENGAN DATA ANDA ======
+      const emailjsConfig = {
+        serviceID: "service_4zdu9tp",  // Ganti dengan Service ID Anda
+        templateID: "service_4zdu9tp", // Ganti dengan Template ID Anda
+        userID: "BMIpgI8DzdOWpLrCrfqAj"         // Ganti dengan User ID Anda
+      };
+      // ====================================
+      
+      // Inisialisasi EmailJS
+      emailjs.init(emailjsConfig.userID);
+      
+      const contactForm = document.getElementById('contact-form');
+      const btnText = document.getElementById('button-text');
+      const btnSpinner = document.getElementById('button-spinner');
+      const formAlert = document.getElementById('form-alert');
+      
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Cek honeypot
+        if(document.getElementById('botcheck').checked) {
+          showAlert('Bot detected! Please fill the form manually.', 'red');
+          return;
+        }
+        
+        // Validasi email
+        const email = document.getElementById('email').value;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          showAlert('Please enter a valid email address.', 'red');
+          return;
+        }
+        
+        // Tampilkan loading state
+        btnText.classList.add('hidden');
+        btnSpinner.classList.remove('hidden');
+        contactForm.classList.add('opacity-75');
+        
+        // Kirim email
+        emailjs.sendForm(emailjsConfig.serviceID, emailjsConfig.templateID, this)
+          .then(function() {
+            showAlert('🎉 Message sent successfully! I will get back to you soon.', 'green');
+            contactForm.reset();
+            document.getElementById('name-check').classList.add('hidden');
+            document.getElementById('email-check').classList.add('hidden');
+            
+            // Animasi konfirmasi
+            const form = document.getElementById('contact');
+            form.classList.add('animate__animated', 'animate__pulse');
+            setTimeout(() => {
+              form.classList.remove('animate__animated', 'animate__pulse');
+            }, 1000);
+          }, function(error) {
+            console.error('Failed to send message:', error);
+            showAlert('❌ Failed to send message. Please try again later or contact me directly at abdurrahim@example.com', 'red');
+          })
+          .finally(function() {
+            // Sembunyikan loading state
+            btnText.classList.remove('hidden');
+            btnSpinner.classList.add('hidden');
+            contactForm.classList.remove('opacity-75');
+          });
+      });
+      
+      function showAlert(message, type) {
+        formAlert.textContent = message;
+        
+        // Set kelas berdasarkan type
+        if (type === 'green') {
+          formAlert.className = 'mt-4 p-4 rounded-lg border border-green-300 bg-green-50 text-green-800 animate__animated animate__fadeIn';
+        } else if (type === 'red') {
+          formAlert.className = 'mt-4 p-4 rounded-lg border border-red-300 bg-red-50 text-red-800 animate__animated animate__headShake';
+        }
+        
+        formAlert.classList.remove('hidden');
+        
+        // Sembunyikan alert setelah 5 detik
+        setTimeout(() => {
+          formAlert.classList.add('animate__animated', 'animate__fadeOut');
+          setTimeout(() => {
+            formAlert.classList.add('hidden');
+            formAlert.classList.remove('animate__animated', 'animate__fadeOut');
+          }, 500);
+        }, 5000);
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- START: Meta Tags and Basic Setup -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects - Abdurrahim</title>
+    
+    <!-- START: CSS and Styling -->
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom fade-in animation -->
+    <style>
+      /* Animation keyframes for fadeInUp effect */
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Class to apply the animation */
+      .fadeInUp {
+        opacity: 0;
+        animation: fadeInUp 1.5s ease forwards;
+      }
+    </style>
+    <!-- END: CSS and Styling -->
+  </head>
+
+  <body class="bg-gray-100 text-gray-900">
+    <!-- START: Navigation Bar -->
+    <nav class="bg-gray-800">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <!-- Desktop Navigation Links -->
+          <div class="flex items-center">
+            <div class="hidden md:block">
+              <div class="ml-10 flex items-baseline space-x-4">
+                <a
+                  href="index.html"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >Dashboard</a
+                >
+                <a
+                  href="project.html"
+                  class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >Projects</a
+                >
+                <a
+                  href="contact.html"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >Contact</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- User Profile Dropdown (Desktop) -->
+          <div class="hidden md:block">
+            <div class="ml-4 flex items-center md:ml-6">
+              <div class="relative ml-3">
+                <button
+                  id="user-menu-button"
+                  type="button"
+                  class="flex text-sm rounded-full bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  aria-expanded="false"
+                >
+                  <span class="sr-only">Open user menu</span>
+                  <img
+                    class="h-8 w-8 rounded-full"
+                    src="asset/img/profile.jpeg"
+                    alt="Profile Picture"
+                  />
+                </button>
+
+                <!-- Dropdown Menu -->
+                <div
+                  id="dropdown-menu"
+                  class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="user-menu-button"
+                >
+                  <a
+                    href="index.html"
+                    class="block px-4 py-2 text-sm text-gray-700"
+                    role="menuitem"
+                    >Dashboard</a
+                  >
+                  <a
+                    href="project.html"
+                    class="block px-4 py-2 text-sm text-gray-700"
+                    role="menuitem"
+                    >Projects</a
+                  >
+                  <a
+                    href="contact.html"
+                    class="block px-4 py-2 text-sm text-gray-700"
+                    role="menuitem"
+                    >Contact</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="-mr-2 flex md:hidden">
+            <button
+              type="button"
+              class="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
+              onclick="toggleMobileMenu()"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu (hidden by default) -->
+      <div class="hidden md:hidden" id="mobile-menu">
+        <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
+          <a
+            href="index.html"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >Dashboard</a
+          >
+          <a
+            href="project.html"
+            class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
+            >Projects</a
+          >
+          <a
+            href="contact.html"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+    <!-- END: Navigation Bar -->
+
+    <!-- START: Back to Top Button -->
+    <button
+      id="backToTop"
+      onclick="scrollToTop()"
+      class="hidden fixed bottom-6 right-6 z-50 bg-gray-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-gray-700 transition duration-300"
+    >
+      ↑ Top
+    </button>
+    <!-- END: Back to Top Button -->
+
+    <!-- START: Main Content -->
+    <main class="py-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Projects Section -->
+        <h1
+          class="text-3xl font-bold text-gray-900 mb-6 text-center fadeInUp"
+          style="animation-delay: 1.4s"
+        >
+          My Projects
+        </h1>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Project Card 1 -->
+          <div
+            class="bg-white rounded-lg shadow-md p-6 fadeInUp transition duration-500"
+            style="animation-delay: 1.2s"
+          >
+            <h2 class="text-xl font-semibold mb-2">
+              Portfolio Website ISLAND3D
+            </h2>
+            <p class="text-gray-700 mb-4">
+              A responsive portfolio site built with HTML, Tailwind CSS, and
+              JavaScript.
+            </p>
+            <a href="https://island3-d.vercel.app/" class="text-indigo-600 hover:underline"
+              >View Project →</a
+            >
+            <a href="https://github.com/Abdurrahim0119/Island3D" class="text-indigo-600 hover:underline"
+              >View Code →</a
+            >
+            <img
+              src="asset/img/islnad3d.png"
+              alt="ISLAND3D Project"
+              class="mt-4 rounded-lg w-full h-48 object-cover"
+            />
+          </div>
+
+          <!-- Project Card 2 -->
+          <div
+            class="bg-white rounded-lg shadow-md p-6 fadeInUp transition duration-500"
+            style="animation-delay: 1.4s"
+          >
+            <h2 class="text-xl font-semibold mb-2">E-Commerce ZynrahShop</h2>
+            <p class="text-gray-700 mb-4">
+              Simple authentication system using PHP, MySQL, and Tailwind for
+              styling.
+            </p>
+            <a href="https://github.com/Abdurrahim0119/Zynrah" class="text-indigo-600 hover:underline"
+              >View Code →</a
+            >
+            <img
+              src="asset/img/zynrah.png"
+              alt="ZynrahShop Project"
+              class="mt-4 rounded-lg w-full h-48 object-cover"
+            />
+          </div>
+
+          <!-- Project Card 3 -->
+          <div
+            class="bg-white rounded-lg shadow-md p-6 fadeInUp transition duration-500"
+            style="animation-delay: 1.6s"
+          >
+            <h2 class="text-xl font-semibold mb-2">
+              Portfolio Curriculum Vitae
+            </h2>
+            <p class="text-gray-700 mb-4">
+              Task management web app built with JavaScript and localStorage.
+            </p>
+            <a href="#" class="text-indigo-600 hover:underline"
+              >View Project →</a
+            >
+            <a href="#" class="text-indigo-600 hover:underline"
+              >View Code →</a
+            >
+            <img
+              src="asset/img/portofoliocv.png"
+              alt="Curriculum Vitae Project"
+              class="mt-4 rounded-lg w-full h-48 object-cover"
+            />
+          </div>
+        </div>
+        <!-- END: Projects Grid -->
+
+        <!-- START: Skills Section -->
+        <div>
+          <h1
+            class="text-3xl text-center font-bold tracking-tight text-gray-900 py-6 fadeInUp"
+            style="animation-delay: 1.8s"
+          >
+            My Skills
+          </h1>
+        </div>
+
+        <!-- Skills Grid -->
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 w-full max-w-5xl px-6 mx-auto"
+        >
+          <!-- Left Column (2 cols) -->
+          <div class="col-span-2 space-y-4 py-6">
+            <!-- HTML Skill -->
+            <div
+              class="flex items-center space-x-4 fadeInUp"
+              style="animation-delay: 1.9s"
+            >
+              <img
+                src="asset/img/html.png"
+                alt="HTML Logo"
+                class="h-16 w-16 object-contain"
+              />
+              <div class="flex-1 bg-gray-300 rounded-full h-6 overflow-hidden">
+                <div
+                  class="bg-orange-500 h-6 rounded-full text-white text-sm font-medium text-center leading-6 transition-all duration-700 ease-in-out"
+                  style="width: 80%"
+                >
+                  80%
+                </div>
+              </div>
+            </div>
+            
+            <!-- CSS Skill -->
+            <div
+              class="flex items-center space-x-4 fadeInUp"
+              style="animation-delay: 1s"
+            >
+              <img
+                src="asset/img/css.png"
+                alt="CSS Logo"
+                class="h-16 w-16 object-contain"
+              />
+              <div class="flex-1 bg-gray-300 rounded-full h-6 overflow-hidden">
+                <div
+                  class="bg-blue-500 h-6 rounded-full text-white text-sm font-medium text-center leading-6 transition-all duration-700 ease-in-out"
+                  style="width: 80%"
+                >
+                  80%
+                </div>
+              </div>
+            </div>
+            
+            <!-- Tailwind Skill -->
+            <div
+              class="flex items-center space-x-4 fadeInUp"
+              style="animation-delay: 1.1s"
+            >
+              <img
+                src="asset/img/tailwind.png"
+                alt="Tailwind Logo"
+                class="h-16 w-16 object-contain"
+              />
+              <div class="flex-1 bg-gray-300 rounded-full h-6 overflow-hidden">
+                <div
+                  class="bg-cyan-500 h-6 rounded-full text-white text-sm font-medium text-center leading-6 transition-all duration-700 ease-in-out"
+                  style="width: 75%"
+                >
+                  75%
+                </div>
+              </div>
+            </div>
+            
+            <!-- Laravel Skill -->
+            <div
+              class="flex items-center space-x-4 fadeInUp"
+              style="animation-delay: 1.2s"
+            >
+              <img
+                src="asset/img/laravel.jpg"
+                alt="Laravel Logo"
+                class="h-16 w-16 object-contain"
+              />
+              <div class="flex-1 bg-gray-300 rounded-full h-6 overflow-hidden">
+                <div
+                  class="bg-red-500 h-6 rounded-full text-white text-sm font-medium text-center leading-6 transition-all duration-700 ease-in-out"
+                  style="width: 75%"
+                >
+                  75%
+                </div>
+              </div>
+            </div>
+            
+            <!-- TypeScript Skill -->
+            <div
+              class="flex items-center space-x-4 fadeInUp"
+              style="animation-delay: 1.3s"
+            >
+              <img
+                src="asset/img/typescript.png"
+                alt="TypeScript Logo"
+                class="h-16 w-16 object-contain"
+              />
+              <div class="flex-1 bg-gray-300 rounded-full h-6 overflow-hidden">
+                <div
+                  class="bg-blue-500 h-6 rounded-full text-white text-sm font-medium text-center leading-6 transition-all duration-700 ease-in-out"
+                  style="width: 65%"
+                >
+                  65%
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column (3 cols) -->
+          <div class="col-span-3 space-y-4 py-6">
+            <!-- PHP Skill -->
+            <div
+              class="flex items-center space-x-4 fadeInUp"
+              style="animation-delay: 1.4s"
+            >
+              <img
+                src="asset/img/php.png"
+                alt="PHP Logo"
+                class="h-16 w-16 object-contain"
+              />
+              <div class="flex-1 bg-gray-300 rounded-full h-6 overflow-hidden">
+                <div
+                  class="bg-purple-500 h-6 rounded-full text-white text-sm font-medium text-center leading-6 transition-all duration-700 ease-in-out"
+                  style="width: 75%"
+                >
+                  75%
+                </div>
+              </div>
+            </div>
+
+            <!-- React Skill -->
+            <div
+              class="flex items-center space-x-4 fadeInUp"
+              style="animation-delay: 2.5s"
+            >
+              <img
+                src="asset/img/react.png"
+                alt="React Logo"
+                class="h-16 w-16 object-contain"
+              />
+              <div class="flex-1 bg-gray-300 rounded-full h-6 overflow-hidden">
+                <div
+                  class="bg-cyan-500 h-6 rounded-full text-white text-sm font-medium text-center leading-6 transition-all duration-700 ease-in-out"
+                  style="width: 65%"
+                >
+                  65%
+                </div>
+              </div>
+            </div>
+
+            <!-- JavaScript Skill -->
+            <div
+              class="flex items-center space-x-4 fadeInUp"
+              style="animation-delay: 2.6s"
+            >
+              <img
+                src="asset/img/javascript.png"
+                alt="JavaScript Logo"
+                class="h-16 w-16 object-contain"
+              />
+              <div class="flex-1 bg-gray-300 rounded-full h-6 overflow-hidden">
+                <div
+                  class="bg-yellow-400 h-6 rounded-full text-white text-sm font-medium text-center leading-6 transition-all duration-700 ease-in-out"
+                  style="width: 80%"
+                >
+                  80%
+                </div>
+              </div>
+            </div>
+
+            <!-- Codeigniter Skill -->
+            <div
+              class="flex items-center space-x-4 fadeInUp"
+              style="animation-delay: 2.7s"
+            >
+              <img
+                src="asset/img/codeigniter.png"
+                alt="Codeigniter Logo"
+                class="h-16 w-16 object-contain"
+              />
+              <div class="flex-1 bg-gray-300 rounded-full h-6 overflow-hidden">
+                <div
+                  class="bg-orange-500 h-6 rounded-full text-white text-sm font-medium text-center leading-6 transition-all duration-700 ease-in-out"
+                  style="width: 75%"
+                >
+                  75%
+                </div>
+              </div>
+            </div>
+            
+            <!-- Bootstrap Skill -->
+            <div
+              class="flex items-center space-x-4 fadeInUp"
+              style="animation-delay: 2.7s"
+            >
+              <img
+                src="asset/img/boostrap.png"
+                alt="Boostrap Logo"
+                class="h-16 w-16 object-contain"
+              />
+              <div class="flex-1 bg-gray-300 rounded-full h-6 overflow-hidden">
+                <div
+                  class="bg-violet-500 h-6 rounded-full text-white text-sm font-medium text-center leading-6 transition-all duration-700 ease-in-out"
+                  style="width: 75%"
+                >
+                  75%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END: Skills Grid -->
+      </div>
+    </main>
+    <!-- END: Main Content -->
+
+    <!-- START: Footer Section -->
+    <footer class="bg-gray-800 text-gray-300 py-6 mt-5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <!-- Social Media Links -->
+        <div class="flex justify-center space-x-6">
+          <!-- GitHub Link -->
+          <a
+            href="https://github.com/Abdurrahim0119"
+            target="_blank"
+            class="hover:text-gray-300"
+          >
+            <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 0C5.372 0 0 5.373 0 12a12 12 0 008.208 11.385c.6.113.82-.26.82-.577v-2.023c-3.338.726-4.042-1.607-4.042-1.607a3.182 3.182 0 00-1.335-1.753c-1.09-.745.082-.73.082-.73a2.518 2.518 0 011.839 1.234 2.55 2.55 0 003.49.995 2.548 2.548 0 01.76-1.6c-2.665-.304-5.466-1.334-5.466-5.933a4.644 4.644 0 011.236-3.215 4.31 4.31 0 01.117-3.171s1.008-.322 3.3 1.23a11.42 11.42 0 016 0c2.29-1.552 3.296-1.23 3.296-1.23a4.31 4.31 0 01.119 3.171 4.639 4.639 0 011.234 3.215c0 4.61-2.803 5.626-5.475 5.922a2.862 2.862 0 01.817 2.222v3.293c0 .32.216.694.825.576A12.003 12.003 0 0024 12c0-6.627-5.373-12-12-12z"
+              />
+            </svg>
+          </a>
+          
+          <!-- LinkedIn Link -->
+          <a
+            href="https://www.linkedin.com/in/abdurrahim-rahim/"
+            target="_blank"
+            class="hover:text-gray-300"
+          >
+            <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11.846 19h-2.308v-8.846h2.308v8.846zm-1.154-10.154c-.738 0-1.333-.595-1.333-1.333s.595-1.333 1.333-1.333 1.333.595 1.333 1.333-.596 1.333-1.333 1.333zm13 10.154h-2.308v-4.154c0-.989-.019-2.262-1.385-2.262-1.386 0-1.598 1.084-1.598 2.194v4.222h-2.308v-8.846h2.215v1.209h.03c.309-.586 1.064-1.202 2.189-1.202 2.344 0 2.777 1.543 2.777 3.548v5.291z"
+              />
+            </svg>
+          </a>
+          
+          <!-- Instagram Link -->
+          <a
+            href="https://www.instagram.com/dedee019?igsh=a3oxOGd6cW5xNXdh"
+            target="_blank"
+            class="hover:text-gray-300"
+          >
+            <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.34 3.608 1.315.975.975 1.253 2.242 1.315 3.608.058 1.266.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.34 2.633-1.315 3.608-.975.975-2.242 1.253-3.608 1.315-1.266.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.34-3.608-1.315-.975-.975-1.253-2.242-1.315-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.34-2.633 1.315-3.608C4.523 2.573 5.79 2.295 7.156 2.233 8.422 2.175 8.802 2.163 12 2.163M12 0C8.741 0 8.332.013 7.053.072 5.775.131 4.58.388 3.515 1.453 2.451 2.518 2.194 3.713 2.135 4.991 2.075 6.27 2.062 6.679 2.062 10c0 3.321.013 3.73.072 5.009.059 1.278.316 2.473 1.38 3.538 1.065 1.065 2.26 1.322 3.538 1.38 1.278.059 1.688.072 5.009.072s3.73-.013 5.009-.072c1.278-.059 2.473-.316 3.538-1.38 1.065-1.065 1.322-2.26 1.38-3.538.059-1.278.072-1.688.072-5.009s-.013-3.73-.072-5.009c-.059-1.278-.316-2.473-1.38-3.538C19.392.388 18.197.131 16.919.072 15.641.013 15.232 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"
+              />
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Copyright Notice -->
+        <p class="mb-4">© 2025 By Abdurrahim. All rights reserved.</p>
+      </div>
+    </footer>
+    <!-- END: Footer Section -->
+
+    <!-- START: JavaScript -->
+    <script>
+      // Navbar dropdown toggle functionality
+      document
+        .getElementById("user-menu-button")
+        .addEventListener("click", function () {
+          document.getElementById("dropdown-menu").classList.toggle("hidden");
+        });
+
+      // Mobile menu toggle function
+      function toggleMobileMenu() {
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenu.classList.toggle("hidden");
+      }
+
+      // Back to Top button logic
+      const backToTopBtn = document.getElementById("backToTop");
+      
+      // Show/hide button based on scroll position
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove("hidden");
+        } else {
+          backToTopBtn.classList.add("hidden");
+        }
+      });
+
+      // Smooth scroll to top function
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // Intersection Observer for fade-in animations
+      const fadeIns = document.querySelectorAll(".fadeInUp");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = 1;
+              entry.target.style.animationDelay =
+                entry.target.style.animationDelay || "0s";
+              entry.target.classList.add("fadeInUp");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 } // Trigger when 10% of element is visible
+      );
+
+      // Observe all elements with fadeInUp class
+      fadeIns.forEach((el) => observer.observe(el));
+    </script>
+    <!-- END: JavaScript -->
+  </body>
+</html>
