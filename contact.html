@@ -10,62 +10,162 @@
 </head>
 <body class="h-full px-4 sm:px-0">
 
-  <!-- Navbar -->
-  <nav class="bg-gray-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16 items-center">
-        <div class="flex items-center">
-          <div class="hidden md:block ml-10 space-x-4">
-            <a href="index.html" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
-            <a href="project.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-            <a href="contact" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
-          </div>
-        </div>
+<!-- START: Navigation Bar -->
+    <nav class="bg-gray-800">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+           <!-- Logo/Brand -->
+      <div>
+        <h1 class="text-white font-bold">Abdurrahim</h1>
+      </div>
 
-        <div class="hidden md:flex items-center space-x-4">
-          <!-- Social Media -->
-          <a href="https://github.com/Abdurrahim0119" target="_blank" class="text-gray-300 hover:text-white text-xl">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/abdurrahim-rahim/" target="_blank" class="text-gray-300 hover:text-white text-xl">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://www.instagram.com/dedee019?igsh=a3oxOGd6cW5xNXdh" target="_blank" class="text-gray-300 hover:text-white text-xl">
-            <i class="fab fa-instagram"></i>
-          </a>
-
-          <!-- Profile Dropdown -->
-          <div class="relative">
-            <button id="user-menu-button" class="flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
-              <img class="h-8 w-8 rounded-full" src="asset/img/profile.jpeg" alt="User menu" />
-            </button>
-            <div id="dropdown-menu" class="hidden absolute right-0 z-10 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
-              <a href="index.html" class="block px-4 py-2 text-sm text-gray-700">Dashboard</a>
-              <a href="project.html" class="block px-4 py-2 text-sm text-gray-700">Projects</a>
-              <a href="contact.html" class="block px-4 py-2 text-sm text-gray-700">Contact</a>
+          <!-- Desktop Navigation Links -->
+          <div class="flex items-center">
+            <div class="hidden md:block">
+              <div class="ml-10 flex items-baseline space-x-4">
+                <a
+                  href="index.html"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >Dashboard</a
+                >
+                <a
+                  href="project.html"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >Projects</a
+                >
+                <a
+                  href="contact.html"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >Contact</a
+                >
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <div class="md:hidden">
-          <button onclick="toggleMobileMenu()" class="p-2 text-gray-400 hover:text-white hover:bg-gray-700">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+          <!-- User Profile Dropdown (Desktop) -->
+      <div class="hidden md:block">
+        <div class="ml-4 flex items-center md:ml-6 relative">
+          <button
+            onclick="toggleDropdown()"
+            class="flex text-sm rounded-full bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
+          >
+            <img
+              class="h-8 w-8 rounded-full border-2 border-gray-300"
+              src="asset/img/profile.jpeg"
+              alt="User Profile"
+            />
           </button>
+
+               <!-- Dropdown Menu -->
+          <div
+            id="dropdown-menu"
+            class="hidden absolute right-0 top-12 w-48 bg-white rounded-md shadow-lg z-50"
+          >
+            <a
+              href="index.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >Dashboard</a
+            >
+            <a
+              href="project.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >Projects</a
+            >
+            <a
+              href="contact.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >Contact</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="-mr-2 flex md:hidden">
+        <button
+          onclick="toggleMobileMenu()"
+          class="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+          aria-expanded="false"
+          aria-label="Toggle menu"
+        >
+          <span class="sr-only">Open main menu</span>
+          <!-- Hamburger icon -->
+          <svg
+            id="mobile-menu-open-icon"
+            class="block h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+          <!-- Close icon (hidden by default) -->
+          <svg
+            id="mobile-menu-close-icon"
+            class="hidden h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu (Hidden by default) -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-gray-800 w-full z-50 shadow-lg"
+  >
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <a
+        href="index.html"
+        class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
+        >Dashboard</a
+      >
+      <a
+        href="project.html"
+        class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+        >Projects</a
+      >
+      <a
+        href="contact.html"
+        class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+        >Contact</a
+      >
+    </div>
+    <!-- Mobile Profile Section -->
+    <div class="pt-4 pb-3 border-t border-gray-700">
+      <div class="flex items-center px-5">
+        <div class="flex-shrink-0">
+          <img
+            class="h-10 w-10 rounded-full border-2 border-gray-300"
+            src="asset/img/profile.jpeg"
+            alt="User Profile"
+          />
+        </div>
+        <div class="ml-3">
+          <div class="text-base font-medium text-white">Abdurrahim</div>
+          <div class="text-sm font-medium text-gray-400">
+            Information Systems Student
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden px-2 pt-2 pb-3">
-      <a href="index.html" class="block text-white bg-gray-900 rounded-md px-3 py-2 text-base font-medium">Dashboard</a>
-      <a href="project.html" class="block text-gray-300 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2 text-base font-medium">Projects</a>
-      <a href="contact.html" class="block text-gray-300 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2 text-base font-medium">Contact</a>
-    </div>
-  </nav>
+  </div>
+</nav>
+<!-- ===== END: NAVIGATION BAR ===== -->
 
   <!-- Contact Form -->
   <main id="contact" class="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg transform transition-all duration-300 hover:shadow-xl">
