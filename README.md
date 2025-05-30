@@ -1,4 +1,8 @@
+![Screenshot](https://i.imgur.com/jvI0F1S.png)
+
 # Curriculum Vitae Portfolio
+
+Created by **Abdurrahim – 2025**
 
 This is a personal project named **Curriculum Vitae Portfolio**, built using only **HTML and CSS**.  
 It is designed as a simple, elegant, and responsive resume website that showcases personal and professional information in a web-based format.
