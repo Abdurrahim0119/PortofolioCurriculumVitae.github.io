@@ -5,11 +5,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projects - Abdurrahim</title>
-    
+
     <!-- START: CSS and Styling -->
     <!-- Load Tailwind CSS from CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Custom fade-in animation -->
     <style>
       /* Animation keyframes for fadeInUp effect */
@@ -38,10 +38,10 @@
     <nav class="bg-gray-800">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
-           <!-- Logo/Brand -->
-      <div>
-        <h1 class="text-white font-bold">Abdurrahim</h1>
-      </div>
+          <!-- Logo/Brand -->
+          <div>
+            <h1 class="text-white font-bold">Abdurrahim</h1>
+          </div>
 
           <!-- Desktop Navigation Links -->
           <div class="flex items-center">
@@ -66,131 +66,130 @@
             </div>
           </div>
           <!-- User Profile Dropdown (Desktop) -->
-      <div class="hidden md:block">
-        <div class="ml-4 flex items-center md:ml-6 relative">
-          <button
-            onclick="toggleDropdown()"
-            class="flex text-sm rounded-full bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
-          >
-            <img
-              class="h-8 w-8 rounded-full border-2 border-gray-300"
-              src="asset/img/profile.jpeg"
-              alt="User Profile"
-            />
-          </button>
+          <div class="hidden md:block">
+            <div class="ml-4 flex items-center md:ml-6 relative">
+              <button
+                onclick="toggleDropdown()"
+                class="flex text-sm rounded-full bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
+              >
+                <img
+                  class="h-8 w-8 rounded-full border-2 border-gray-300"
+                  src="asset/img/profile.jpeg"
+                  alt="User Profile"
+                />
+              </button>
 
-               <!-- Dropdown Menu -->
-          <div
-            id="dropdown-menu"
-            class="hidden absolute right-0 top-12 w-48 bg-white rounded-md shadow-lg z-50"
-          >
-            <a
-              href="index.html"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              >Dashboard</a
+              <!-- Dropdown Menu -->
+              <div
+                id="dropdown-menu"
+                class="hidden absolute right-0 top-12 w-48 bg-white rounded-md shadow-lg z-50"
+              >
+                <a
+                  href="index.html"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >Dashboard</a
+                >
+                <a
+                  href="project.html"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >Projects</a
+                >
+                <a
+                  href="contact.html"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >Contact</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="-mr-2 flex md:hidden">
+            <button
+              onclick="toggleMobileMenu()"
+              class="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+              aria-expanded="false"
+              aria-label="Toggle menu"
             >
-            <a
-              href="project.html"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              >Projects</a
-            >
-            <a
-              href="contact.html"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              >Contact</a
-            >
+              <span class="sr-only">Open main menu</span>
+              <!-- Hamburger icon -->
+              <svg
+                id="mobile-menu-open-icon"
+                class="block h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+              <!-- Close icon (hidden by default) -->
+              <svg
+                id="mobile-menu-close-icon"
+                class="hidden h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- Mobile Menu Button -->
-      <div class="-mr-2 flex md:hidden">
-        <button
-          onclick="toggleMobileMenu()"
-          class="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-          aria-expanded="false"
-          aria-label="Toggle menu"
-        >
-          <span class="sr-only">Open main menu</span>
-          <!-- Hamburger icon -->
-          <svg
-            id="mobile-menu-open-icon"
-            class="block h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+      <!-- Mobile Menu (Hidden by default) -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-gray-800 w-full z-50 shadow-lg"
+      >
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a
+            href="index.html"
+            class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
+            >Dashboard</a
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-          <!-- Close icon (hidden by default) -->
-          <svg
-            id="mobile-menu-close-icon"
-            class="hidden h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+          <a
+            href="project.html"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >Projects</a
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Mobile Menu (Hidden by default) -->
-  <div
-    id="mobile-menu"
-    class="hidden md:hidden bg-gray-800 w-full z-50 shadow-lg"
-  >
-    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-      <a
-        href="index.html"
-        class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-        >Dashboard</a
-      >
-      <a
-        href="project.html"
-        class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-        >Projects</a
-      >
-      <a
-        href="contact.html"
-        class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-        >Contact</a
-      >
-    </div>
-    <!-- Mobile Profile Section -->
-    <div class="pt-4 pb-3 border-t border-gray-700">
-      <div class="flex items-center px-5">
-        <div class="flex-shrink-0">
-          <img
-            class="h-10 w-10 rounded-full border-2 border-gray-300"
-            src="asset/img/profile.jpeg"
-            alt="User Profile"
-          />
+          <a
+            href="contact.html"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >Contact</a
+          >
         </div>
-        <div class="ml-3">
-          <div class="text-base font-medium text-white">Abdurrahim</div>
-          <div class="text-sm font-medium text-gray-400">
-            Information Systems Student
+        <!-- Mobile Profile Section -->
+        <div class="pt-4 pb-3 border-t border-gray-700">
+          <div class="flex items-center px-5">
+            <div class="flex-shrink-0">
+              <img
+                class="h-10 w-10 rounded-full border-2 border-gray-300"
+                src="asset/img/profile.jpeg"
+                alt="User Profile"
+              />
+            </div>
+            <div class="ml-3">
+              <div class="text-base font-medium text-white">Abdurrahim</div>
+              <div class="text-sm font-medium text-gray-400">
+                Information Systems Student
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</nav>
-<!-- ===== END: NAVIGATION BAR ===== -->
-
+    </nav>
+    <!-- ===== END: NAVIGATION BAR ===== -->
 
     <!-- START: Back to Top Button -->
     <button
@@ -224,13 +223,17 @@
               Portfolio Website ISLAND3D
             </h2>
             <p class="text-gray-700 mb-4">
-              A responsive portfolio Style 3D site built with React, Tailwind CSS, and
-              JavaScript.
+              A responsive portfolio Style 3D site built with React, Tailwind
+              CSS, and JavaScript.
             </p>
-            <a href="https://island3-d.vercel.app/" class="text-indigo-600 hover:underline"
+            <a
+              href="https://island3-d.vercel.app/"
+              class="text-indigo-600 hover:underline"
               >View Project →</a
             >
-            <a href="https://github.com/Abdurrahim0119/Island3D" class="text-indigo-600 hover:underline"
+            <a
+              href="https://github.com/Abdurrahim0119/Island3D"
+              class="text-indigo-600 hover:underline"
               >View Code →</a
             >
             <img
@@ -250,7 +253,9 @@
               Simple authentication system using Codeigniter, PHP, and MySQL for
               styling.
             </p>
-            <a href="https://github.com/Abdurrahim0119/Zynrah" class="text-indigo-600 hover:underline"
+            <a
+              href="https://github.com/Abdurrahim0119/Zynrah"
+              class="text-indigo-600 hover:underline"
               >View Code →</a
             >
             <img
@@ -271,10 +276,14 @@
             <p class="text-gray-700 mb-4">
               Task management web app built with Html and Style TailwindCss.
             </p>
-            <a href="https://abdurrahim0119.github.io/PortofolioCurriculumVitae.github.io/" class="text-indigo-600 hover:underline"
+            <a
+              href="https://abdurrahim0119.github.io/PortofolioCurriculumVitae.github.io/"
+              class="text-indigo-600 hover:underline"
               >View Project →</a
             >
-            <a href="https://github.com/Abdurrahim0119/PortofolioCurriculumVitae.github.io" class="text-indigo-600 hover:underline"
+            <a
+              href="https://github.com/Abdurrahim0119/PortofolioCurriculumVitae.github.io"
+              class="text-indigo-600 hover:underline"
               >View Code →</a
             >
             <img
@@ -321,7 +330,7 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- CSS Skill -->
             <div
               class="flex items-center space-x-4 fadeInUp"
@@ -341,7 +350,7 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- Tailwind Skill -->
             <div
               class="flex items-center space-x-4 fadeInUp"
@@ -361,7 +370,7 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- Laravel Skill -->
             <div
               class="flex items-center space-x-4 fadeInUp"
@@ -381,7 +390,7 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- TypeScript Skill -->
             <div
               class="flex items-center space-x-4 fadeInUp"
@@ -484,7 +493,7 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- Bootstrap Skill -->
             <div
               class="flex items-center space-x-4 fadeInUp"
@@ -528,7 +537,7 @@
               />
             </svg>
           </a>
-          
+
           <!-- LinkedIn Link -->
           <a
             href="https://www.linkedin.com/in/abdurrahim-rahim/"
@@ -541,7 +550,7 @@
               />
             </svg>
           </a>
-          
+
           <!-- Instagram Link -->
           <a
             href="https://www.instagram.com/dedee019?igsh=a3oxOGd6cW5xNXdh"
@@ -555,7 +564,7 @@
             </svg>
           </a>
         </div>
-        
+
         <!-- Copyright Notice -->
         <p class="mb-4">© 2025 By Abdurrahim. All rights reserved.</p>
       </div>
@@ -579,7 +588,7 @@
 
       // Back to Top button logic
       const backToTopBtn = document.getElementById("backToTop");
-      
+
       // Show/hide button based on scroll position
       window.addEventListener("scroll", () => {
         if (window.scrollY > 300) {
